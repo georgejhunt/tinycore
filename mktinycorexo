@@ -896,7 +896,9 @@ for x in ttyS0 ttyS2; do
         echo "press enter for shell" > /dev/\$x 2>/dev/null
 done
 
-grep -qw xo-custom /proc/cmdline && /usr/local/bin/xo-custom
+if [ ! -f /mnt/sda1/no-custom ]; then
+	grep -qw xo-custom /proc/cmdline && /usr/local/bin/xo-custom
+fi
 
 EOF
 
